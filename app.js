@@ -12,7 +12,9 @@ var User = require('./models/user')
 var seedDB = require('./seeds')
 
 
-mongoose.connect("mongodb://localhost/nodeMovies")
+//mongoose.connect("mongodb://localhost/nodeMovies")
+mongoose.connect("mongodb://coexx037:Barretff7@ds147821.mlab.com:47821/barret")
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash())
 app.set("view engine", "ejs");
