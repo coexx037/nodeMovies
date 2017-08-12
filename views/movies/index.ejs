@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+
+<div class='container'>
+    <header class='jumbotron'>
+    <div clas="container">
+        <h1>Welcome to nodeMovie!</h1>
+        <p>View our movies</p>
+        <p>
+        <a class='btn btn-primary btn-large' href="/movies/new">Add new movie</a>
+        </p>
+    </div>
+</header>
+
+<div class="col-md-3">
+    <div class="list-group">
+        <% if(!activeCat){ %>
+            <li class="list-group-item active"><a style="color:white" href="/movies">All</a></li>
+        <% }else { %>
+            <li class="list-group-item"><a href="/movies">All</a></li>
+        <% } %>
+        <% cat.forEach(function(category){
+           if(category == activeCat){ %>
+               <li class="list-group-item active"><a style="color:white" href="/movies/category/<%= category %>"><%= category %></a></li>
+           <% }else { %>
+               <li class="list-group-item"><a href="/movies/category/<%= category %>"><%= category %></a></li>
+        <% }
+            
+        }) %>
+    </div>
+</div>
+    <div class='row text-center' style='display:flex; flex-wrap: wrap;'>
+        <% movies.forEach(function(movie){ %>
+        <div class='col-md-3 col-sm-6'>
+            <div class='thumbnail'>
+                <img src="<%=movie.image%>">
+                <div class='caption'>
+                    <h4><%=movie.name%></h4>
+                </div>
+                <p>
+                    <a href="/movies/<%=movie._id%>" class='btn btn-primary'>More Info</a>
+                </p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+
+</div>
+
+<% include ../partials/footer %>
